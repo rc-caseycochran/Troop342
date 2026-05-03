@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Troop 342 | Boy Scouts of America | Lakewood, CO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #2e3775;
+    --navy-dark: #1c2356;
+    --navy-light: #3d4a9e;
+    --gold: #f5a623;
+    --gold-dark: #c8841a;
+    --white: #ffffff;
+    --off-white: #f7f6f2;
+    --text: #1a1a2e;
+    --text-muted: #555570;
+    --border: rgba(46,55,117,0.15);
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--off-white);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--navy-dark);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid var(--gold);
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    color: var(--white);
+    padding: 5rem 1.5rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.02) 40px,
+      rgba(255,255,255,0.02) 80px
+    );
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy-dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub {
+    font-size: 1.15rem;
+    opacity: 0.8;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .hero-meta-item .label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .hero-meta-item .value {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .hero-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.2);
+    align-self: center;
+  }
+  .hero-cta {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy-dark);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.85rem 2.5rem;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .hero-cta:hover { background: var(--gold-dark); transform: translateY(-1px); }
+
+  /* ── SECTION WRAPPER ── */
+  .section { padding: 4rem 1.5rem; }
+  .section.alt { background: var(--white); }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--navy-dark);
+    margin-bottom: 1rem;
+  }
+  .section-intro {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 620px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  /* ── PHILOSOPHY CARDS ── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--navy);
+    padding: 1.75rem;
+    border-radius: 2px;
+  }
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .card h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+    margin-bottom: 0.6rem;
+  }
+  .card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.65; }
+
+  /* ── EVENTS ── */
+  .events-list { display: flex; flex-direction: column; gap: 1rem; }
+  .event-row {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--navy);
+    border-radius: 2px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .event-row.gold-accent { border-left-color: var(--gold); }
+  .event-date {
+    min-width: 60px;
+    text-align: center;
+    background: var(--navy);
+    color: var(--white);
+    padding: 0.5rem 0.75rem;
+    border-radius: 2px;
+  }
+  .event-date .month {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .event-date .day {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .event-info h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+    margin-bottom: 0.2rem;
+  }
+  .event-info p { font-size: 0.88rem; color: var(--text-muted); }
+  .event-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: rgba(46,55,117,0.1);
+    color: var(--navy);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    margin-top: 0.4rem;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .contact-card {
+    background: var(--navy);
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 2px;
+  }
+  .contact-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--gold);
+  }
+  .contact-card p, .contact-card a {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+    text-decoration: none;
+  }
+  .contact-card a:hover { color: var(--gold); }
+  .contact-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-top: 0.75rem;
+    display: block;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-dark);
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: 0.85rem;
+    border-top: 3px solid var(--gold);
+  }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+    .hero-divider { display: none; }
+    .nav-links { gap: 1.25rem; }
+    .event-row { flex-direction: column; gap: 0.75rem; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-badge { animation: fadeUp 0.5s ease both; }
+  .hero h1 { animation: fadeUp 0.5s 0.1s ease both; }
+  .hero-sub { animation: fadeUp 0.5s 0.2s ease both; }
+  .hero-meta { animation: fadeUp 0.5s 0.3s ease both; }
+  .hero-cta { animation: fadeUp 0.5s 0.4s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#"><span>342</span> | Lakewood, CO</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">Boy Scouts of America</div>
+  <h1>Troop <span>342</span></h1>
+  <p class="hero-sub">Lakewood, Colorado &mdash; Youth-led. Adult-sponsored. Outdoor-focused.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="label">Meets</span>
+      <span class="value">Every Monday</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">
+      <span class="label">Time</span>
+      <span class="value">7:00 &ndash; 8:30 PM</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">
+      <span class="label">Location</span>
+      <span class="value">Green Mountain Christian Church</span>
+    </div>
+  </div>
+  <a class="hero-cta" href="#contact">Get Involved</a>
+</header>
+
+<!-- ABOUT -->
+<section class="section alt" id="about">
+  <div class="container">
+    <p class="section-label">Our Philosophy</p>
+    <h2 class="section-title">Scouts Lead. Adults Support.</h2>
+    <p class="section-intro">
+      We believe in the "Youth-led, Adult-sponsored" philosophy. The Scouts run the meetings, plan the outings, and set the calendar. Adults make sure the program is delivered safely and well.
+    </p>
+    <div class="cards">
+      <div class="card">
+        <span class="card-icon">&#127956;</span>
+        <h3>Outdoor Skills First</h3>
+        <p>Our program centers on real outdoor competency: navigation, camping, cooking, Leave No Trace, and the skills that build confidence in the backcountry and beyond.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">&#127775;</span>
+        <h3>Scouts Teach Scouts</h3>
+        <p>Older Scouts mentor younger ones. Leadership isn't a title here, it's a habit built through teaching, guiding, and taking responsibility for those who come after you.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">&#127919;</span>
+        <h3>Advancement at Your Pace</h3>
+        <p>We strongly encourage advancement, but we never force it. Scouts set their own goals. Many great Scouts never became Eagle Scouts, and that's more than okay.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">&#129309;</span>
+        <h3>Give Back</h3>
+        <p>We push Scouts to volunteer and staff council events: Klondike, Webelos Weekend, NYLT, and Camporee. Service isn't a checkbox, it's part of who we are.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="section" id="events">
+  <div class="container">
+    <p class="section-label">What's Coming Up</p>
+    <h2 class="section-title">Upcoming Events</h2>
+    <p class="section-intro">
+      From weekly meetings to high-adventure trips in the Colorado mountains, there's always something on the calendar. Check back often or subscribe to our iCal feed.
+    </p>
+    <div class="events-list">
+
+      <div class="event-row">
+        <div class="event-date">
+          <div class="month">Weekly</div>
+          <div class="day">Mon</div>
+        </div>
+        <div class="event-info">
+          <h4>Weekly Troop Meeting</h4>
+          <p>Green Mountain Christian Church, Lakewood &mdash; 7:00 to 8:30 PM</p>
+          <span class="event-tag">Every Monday</span>
+        </div>
+      </div>
+
+      <div class="event-row gold-accent">
+        <div class="event-date" style="background: var(--gold); color: var(--navy-dark);">
+          <div class="month">May</div>
+          <div class="day">22</div>
+        </div>
+        <div class="event-info">
+          <h4>Moms Weekend at Leadville</h4>
+          <p>First Presbyterian Church, 299 McWethy Drive, Leadville, CO &mdash; May 22&ndash;24. Indoor accommodations, full kitchen, flush toilets.</p>
+          <span class="event-tag">Campout</span>
+        </div>
+      </div>
+
+      <div class="event-row">
+        <div class="event-date">
+          <div class="month">Jun</div>
+          <div class="day">14</div>
+        </div>
+        <div class="event-info">
+          <h4>Summer Camp &mdash; McNeil Scout Ranch</h4>
+          <p>Peaceful Valley, Jun 14&ndash;20. Shooting sports, climbing, zipline, mountain biking, water activities, and 50+ merit badges.</p>
+          <span class="event-tag">Summer Camp</span>
+        </div>
+      </div>
+
+      <div class="event-row gold-accent">
+        <div class="event-date" style="background: var(--gold); color: var(--navy-dark);">
+          <div class="month">Jun</div>
+          <div class="day">26</div>
+        </div>
+        <div class="event-info">
+          <h4>Switzerland High Adventure</h4>
+          <p>Jun 26 &ndash; Jul 10. A few spots remain. Contact Casey for trip details. IOLS required for attending adults.</p>
+          <span class="event-tag">High Adventure</span>
+        </div>
+      </div>
+
+    </div>
+    <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+      Full calendar available via our <a href="http://tmweb.troopmaster.com/activitymanagement/icalendar/?id=rLsNOy~O&timezone=Mountain_Standard_Time" style="color: var(--navy); font-weight: 600;">iCal feed</a> (subscribe in Google Calendar, Apple Calendar, or Outlook).
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section alt" id="contact">
+  <div class="container">
+    <p class="section-label">Reach Out</p>
+    <h2 class="section-title">Contact &amp; Join</h2>
+    <p class="section-intro">
+      Thinking about joining? Have a question about an upcoming event? We'd love to hear from you.
+    </p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Scoutmaster</h3>
+        <span class="contact-label">Name</span>
+        <p>Casey Cochran</p>
+        <span class="contact-label">Email</span>
+        <p><a href="mailto:caseywcochran@gmail.com">caseywcochran@gmail.com</a></p>
+        <span class="contact-label">Phone</span>
+        <p><a href="tel:7205050195">720-505-0195</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>TroopMaster Help</h3>
+        <span class="contact-label">Steve Dendinger</span>
+        <p><a href="mailto:s_dendinger@yahoo.com">s_dendinger@yahoo.com</a><br />720-987-9316</p>
+        <span class="contact-label">Jeaneane Renz (Paperwork &amp; RSVPs)</span>
+        <p><a href="mailto:trillian1228@gmail.com">trillian1228@gmail.com</a><br />801-710-0318</p>
+      </div>
+      <div class="contact-card">
+        <h3>Where We Meet</h3>
+        <span class="contact-label">Location</span>
+        <p>Green Mountain Christian Church<br />Lakewood, Colorado</p>
+        <span class="contact-label">Schedule</span>
+        <p>Every Monday<br />7:00 &ndash; 8:30 PM</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Troop 342</strong> &mdash; Boy Scouts of America &mdash; Lakewood, CO</p>
+  <p style="margin-top: 0.4rem;">Greater Colorado Council | Alpine District</p>
+</footer>
+
+</body>
+</html>
